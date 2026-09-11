@@ -34,6 +34,7 @@ export default function CollectionView({ title, description, endpoint, columns }
     }
   }, [endpoint])
 
+  
   return (
     <section className="resource-page">
       <div className="resource-heading">
