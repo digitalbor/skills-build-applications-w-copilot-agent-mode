@@ -7,12 +7,16 @@ const columns = [
   { key: 'points', label: 'Points' },
 ]
 
+const endpoint = import.meta.env.VITE_CODESPACE_NAME?.trim()
+  ? `https://${import.meta.env.VITE_CODESPACE_NAME.trim()}-8000.app.github.dev/api/users/`
+  : 'http://localhost:8000/api/users/'
+
 export default function Users() {
   return (
     <CollectionView
       title="Users"
       description="The athletes powering your OctoFit community."
-      endpoint="users"
+      endpoint={endpoint}
       columns={columns}
     />
   )

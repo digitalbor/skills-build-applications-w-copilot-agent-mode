@@ -9,12 +9,16 @@ const columns = [
   { key: 'completedAt', label: 'Completed', format: formatDate },
 ]
 
+const endpoint = import.meta.env.VITE_CODESPACE_NAME?.trim()
+  ? `https://${import.meta.env.VITE_CODESPACE_NAME.trim()}-8000.app.github.dev/api/activities/`
+  : 'http://localhost:8000/api/activities/'
+
 export default function Activities() {
   return (
     <CollectionView
       title="Activities"
       description="Recent movement logged by your fitness community."
-      endpoint="activities"
+      endpoint={endpoint}
       columns={columns}
     />
   )

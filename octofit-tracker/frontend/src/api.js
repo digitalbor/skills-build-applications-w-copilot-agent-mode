@@ -11,10 +11,13 @@ function getCollection(payload) {
   return []
 }
 
-export async function fetchCollection(resource) {
-  const response = await fetch(`${API_BASE_URL}/${resource}/`)
+export async function fetchCollection(resourceOrUrl) {
+  const endpoint = resourceOrUrl.startsWith('http')
+    ? resourceOrUrl
+    : `${API_BASE_URL}/${resourceOrUrl}/`
+  const response = await fetch(endpoint)
   if (!response.ok) {
-    throw new Error(`Unable to load ${resource} (${response.status})`)
+    throw new Error(`Unable to load collection (${response.status})`)
   }
 
   return getCollection(await response.json())
