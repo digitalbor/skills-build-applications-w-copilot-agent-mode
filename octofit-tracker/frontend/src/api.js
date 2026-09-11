@@ -19,3 +19,4 @@ export async function fetchCollection(resource) {
 
   return getCollection(await response.json())
 }
+
